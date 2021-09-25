@@ -8,9 +8,9 @@ COPY ./requirements.txt /requirements.txt
 RUN pip install -r requirements.txt
 
 
-RUN mkdir /app
-WORKDIR /app
-COPY ./app /app
+RUN mkdir /weatwork
+WORKDIR /weatwork
+COPY ./weatwork /weatwork
 
 RUN adduser -D maintainer
 USER maintainer
