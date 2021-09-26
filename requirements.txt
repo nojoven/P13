@@ -26,7 +26,6 @@ pytest-cov==2.12.1
 pytest-picked==0.4.6
 pytest-instafail==0.4.2
 pytest-tldr==0.2.4
-pytest-emoji==0.2.0
 pytest-html==3.1.1
 pytest-randomly==3.10.1
 pytest-flake8==1.0.7
