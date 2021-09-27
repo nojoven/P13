@@ -21,6 +21,6 @@ pytest-cov==2.12.1
 pytest-picked==0.4.6
 pytest-randomly==3.10.1
 pytest-tldr==0.2.4
-pytest-emoji==0.2.0
+#pytest-emoji==0.2.0
 pytest-seleniumbase==1.66.1
-pytest-spec==3.2.0
+#pytest-spec==3.2.0
