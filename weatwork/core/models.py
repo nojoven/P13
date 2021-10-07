@@ -1,34 +1,36 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
-                                    PermissionsMixin
+from django.contrib.auth.models import (
+    AbstractBaseUser,
+    BaseUserManager,
+    PermissionsMixin,
+)
 
-class UserManager(BaseUserManager): 
-    
-    def  create_user(self, email, password=None, **extra_fields):
+
+class UserManager(BaseUserManager):
+    def create_user(self, email, password=None, **extra_fields):
         """Creates and saves a new user"""
         if not email:
-            raise ValueError('Users must have an email address')
-        
+            raise ValueError("Users must have an email address")
+
         user = self.model(email=self.normalize_email(email), **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
-        
+
         return user
-    
+
     def create_superuser(self, email, password=None):
         """Creates and saves a new superuser"""
         user = self.create_user(email, password)
         user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
-        
+
         return user
-        
-    
+
 
 class User(AbstractBaseUser, PermissionsMixin):
     """Custom user model that supports using email instrad of usernames"""
-    
+
     email = models.EmailField(max_length=255, unique=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -58,12 +60,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     current_job_start_date = models.DateField(null=True)
     next_availability_date = models.DateField(null=True)
     work_experience_in_months = models.IntegerField(default=0)
-    
+
     is_company_owner = models.BooleanField(null=True)
     is_self_employed = models.BooleanField(null=True)
     is_open_to_work = models.BooleanField(null=True)
     is_notice_period = models.BooleanField(null=True)
-    
+
     is_showing_photos = models.BooleanField(default=True)
     is_showing_videos = models.BooleanField(default=True)
     is_showing_cv = models.BooleanField(default=True)
@@ -73,15 +75,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_showing_given_recommendations = models.BooleanField(default=True)
     is_showing_received_recommendations = models.BooleanField(default=True)
     is_showing_received_recommendations = models.BooleanField(default=True)
-    
+
     is_download_allowed = models.BooleanField(default=True)
-    
+
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    
-    created_at = models.DateTimeField(auto_now= True)
-    
+
+    created_at = models.DateTimeField(auto_now=True)
+
     objects = UserManager()
-    
-    USERNAME_FIELD = 'email'
-    
+
+    USERNAME_FIELD = "email"

@@ -6,43 +6,29 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0001_initial'),
+        ("core", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='user',
-            name='current_job_start_date',
-            field=models.DateField(),
+            model_name="user", name="current_job_start_date", field=models.DateField(),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='is_company_owner',
-            field=models.BooleanField(),
+            model_name="user", name="is_company_owner", field=models.BooleanField(),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='is_notice_period',
-            field=models.BooleanField(),
+            model_name="user", name="is_notice_period", field=models.BooleanField(),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='is_open_to_work',
-            field=models.BooleanField(),
+            model_name="user", name="is_open_to_work", field=models.BooleanField(),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='is_self_employed',
-            field=models.BooleanField(),
+            model_name="user", name="is_self_employed", field=models.BooleanField(),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='next_availability_date',
-            field=models.DateField(),
+            model_name="user", name="next_availability_date", field=models.DateField(),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='zip_code',
-            field=models.CharField(max_length=255),
+            model_name="user", name="zip_code", field=models.CharField(max_length=255),
         ),
     ]

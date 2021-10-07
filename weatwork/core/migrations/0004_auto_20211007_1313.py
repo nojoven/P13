@@ -6,18 +6,14 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0003_auto_20211007_1312'),
+        ("core", "0003_auto_20211007_1312"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='user',
-            name='current_job_start_date',
-            field=models.DateField(),
+            model_name="user", name="current_job_start_date", field=models.DateField(),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='next_availability_date',
-            field=models.DateField(),
+            model_name="user", name="next_availability_date", field=models.DateField(),
         ),
     ]
