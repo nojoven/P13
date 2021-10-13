@@ -3,6 +3,8 @@ from django.contrib.auth import get_user_model  # Better than importing the mode
 
 
 class ModelTests(TestCase):
+    
+    # Test User
     def test_create_user_email_successful(self):
         """Test creating a new user with an email is successful"""
 
@@ -32,3 +34,6 @@ class ModelTests(TestCase):
         )
         self.assertTrue(user.is_superuser)  # is_superuser() comes from PermissionsMixin
         self.assertTrue(user.is_staff)
+
+    # Test Company
+    
