@@ -7,13 +7,17 @@ RUN apk add jpeg-dev
 LABEL OPCStudent: Cedric_Joseph
 
 ENV PYTHONUNBUFFERED 1
-
+RUN pip3 install wheel
 COPY ./requirements.txt /requirements.txt
-RUN apk add --update --no-cache postgresql-client
+RUN pip3 uninstall psycopg2
+RUN pip3 list --outdated
+RUN pip3 install --upgrade wheel
+RUN pip3 install --upgrade setuptools
+RUN pip3 install psycopg2
+RUN apk add --update --no-cache postgresql-client jpeg-dev
 RUN apk add --update --no-cache --virtual .tmp-build-deps \
-    gcc libc-dev postgresql-dev
-
-RUN pip install -r requirements.txt
+      gcc libc-dev linux-headers postgresql-dev musl-dev zlib zlib-dev
+RUN pip3 install -r /requirements.txt
 RUN apk del .tmp-build-deps
 
 RUN mkdir /weatwork
