@@ -1,5 +1,5 @@
 #FROM python:3.9-bullseye
-FROM python:3.9-alpine
+FROM python:3.7-alpine
 
 RUN apk update && apk add make git libffi-dev openssl-dev python3-dev libxml2-dev libxslt-dev 
 RUN apk add jpeg-dev
