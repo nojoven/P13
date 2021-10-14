@@ -8,8 +8,8 @@ services:
       - "8000:8000"
     volumes:
      - ./weatwork:/weatwork
-    command: >
-      sh -c "python manage.py runserver 0.0.0.0:8000"
+    command:  sh -c "while !</dev/tcp/db/5432; do sleep 1; done;"
+    command: sh -c "python manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=db
       - DB_NAME=weatwork
@@ -20,7 +20,7 @@ services:
   
 
   db:
-    image: postgres:10-alpine
+    image: postgres:13-alpine
     ports:
       - "5432:5432"
     environment:
