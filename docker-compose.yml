@@ -22,7 +22,7 @@ services:
   db:
     image: postgres:10-alpine
     ports:
-      - 5432:5432/tcp
+      - "5432:5432"
     environment:
       - POSTGRES_DB=weatwork
       - POSTGRES_USER=$POSTGRES_USER

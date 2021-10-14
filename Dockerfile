@@ -18,7 +18,7 @@ RUN pip3 uninstall psycopg2
 RUN pip3 list --outdated
 RUN pip3 install --upgrade wheel
 RUN pip3 install --upgrade setuptools
-RUN pip3 install psycopg2==2.9.1
+#RUN pip3 install psycopg2==2.9.1
 
 RUN pip3 install -r /requirements.txt
 RUN apk del .tmp-build-deps
