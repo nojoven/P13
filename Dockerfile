@@ -7,9 +7,10 @@ RUN apk add jpeg-dev
 LABEL OPCStudent: Cedric_Joseph
 
 ENV PYTHONUNBUFFERED 1
+RUN pip install --upgrade pip
 RUN pip3 install wheel
 COPY ./requirements.txt /requirements.txt
-RUN pip3 uninstall psycopg2
+RUN pip3 uninstall psycopg2==2.9.1
 RUN pip3 list --outdated
 RUN pip3 install --upgrade wheel
 RUN pip3 install --upgrade setuptools
