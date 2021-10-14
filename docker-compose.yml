@@ -1,6 +1,12 @@
 version: "3"
 
 services:
+  waitfordb:
+    image: dadarek/wait-for-dependencies
+    depends_on:
+      - db 
+    command: db:5432
+
   weatwork:
     build:
       context: .
@@ -16,6 +22,7 @@ services:
       - DB_USER=$DB_USER
       - DB_PASS=$DB_PASS
     depends_on:
+      - waitfordb
       - db
   
 
