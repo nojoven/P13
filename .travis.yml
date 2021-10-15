@@ -11,6 +11,5 @@ before_install:
 before_script: pip install docker-compose
 
 script:
-  - docker-compose run db
-  - docker-compose run --rm waitfordb
+  - docker-compose run --rm waitfordb && docker-compose run db 
   - docker-compose run weatwork sh -c "python manage.py test && flake8" 
