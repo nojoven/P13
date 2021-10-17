@@ -30,7 +30,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    """Custom user model that supports using email instrad of usernames"""
+    """Custom user model that supports using email instead of usernames"""
 
     email = models.EmailField(max_length=255, unique=True)
     first_name = models.CharField(max_length=255)
@@ -91,3 +91,22 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = "email"
+
+
+class Company(models.Model):
+    def __str__(self):
+            return self.company_name
+                    
+    name = models.CharField(max_length=100)
+    registration_number = models.CharField(max_length=255, unique=True)
+    industry = models.CharField(max_length=100)
+    headquarters_country = models.CharField(max_length=200)
+    headquarters_address = models.CharField(max_length=200)
+    headquarters_zip_code = models.CharField(max_length=200)
+    motto = models.CharField(max_length=255)
+    decription = models.CharField(max_length=255)
+    logo_url = models.CharField(max_length=500, default="https://cdn.pixabay.com/photo/2019/07/26/20/52/man-4365597_960_720.png")
+    number_of_employees = models.IntegerField(default=0)
+    creation_date = models.DateField(null=True)
+    
+    
