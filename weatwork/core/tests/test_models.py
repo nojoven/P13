@@ -4,8 +4,9 @@ from django.contrib.auth import get_user_model  # Better than importing the mode
 from ..models import Company, Profile
 from core.constants import INDUSTRY_LIST, USERS_PROFILES
 
+
 class ModelTests(TestCase):
-    
+
     # Test User
     def test_create_user_email_successful(self):
         """Test creating a new user with an email is successful"""
@@ -40,25 +41,28 @@ class ModelTests(TestCase):
     # Test Company
     def test_create_company(self):
         """Test creating a new company is successful"""
-        registration_number="0531"
+        registration_number = "0531"
         name = "The Builders"
         industry = "Software Engineering"
-        company = Company.objects.create(name=name, industry=industry.lower(), registration_number=registration_number)
+        company = Company.objects.create(
+            name=name,
+            industry=industry.lower(),
+            registration_number=registration_number,
+        )
 
         company.save()
-        
+
         self.assertEqual(company.name, name)
         self.assertEqual(company.registration_number, registration_number)
-        self.assertTrue(company.industry in INDUSTRY_LIST)  # Because password is encrypted
-    
-    
+        self.assertTrue(
+            company.industry in INDUSTRY_LIST
+        )  # Because password is encrypted
+
     # Test Profile Type
     def test_create_profile_type(self):
         """Test creating a new profile type"""
-        name="worker"
+        name = "worker"
         profile = Profile.objects.create(name=name.lower())
         profile.save()
-        
+
         self.assertEqual(profile.name, name.lower())
-        
-    

@@ -36,7 +36,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     # username = models.CharField(max_length=255, unique=True)
-    name = models.CharField(max_length=255, null = True, default=None)
+    name = models.CharField(max_length=255, null=True, default=None)
     nickname = models.CharField(max_length=255)
     linkedin = models.URLField(max_length=255, unique=True, blank=True)
     instagram = models.URLField(max_length=255, unique=True, blank=True)
@@ -95,8 +95,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class Company(models.Model):
     def __str__(self):
-            return self.name
-                    
+        return self.name
+
     name = models.CharField(max_length=100)
     registration_number = models.CharField(max_length=255, unique=True)
     industry = models.CharField(max_length=100)
@@ -105,15 +105,18 @@ class Company(models.Model):
     headquarters_zip_code = models.CharField(max_length=200)
     motto = models.CharField(max_length=255)
     decription = models.CharField(max_length=255)
-    logo_url = models.CharField(max_length=500, default="https://cdn.pixabay.com/photo/2019/07/26/20/52/man-4365597_960_720.png")
+    logo_url = models.CharField(
+        max_length=500,
+        default="https://cdn.pixabay.com/photo/2019/07/26/20/52/man-4365597_960_720.png",
+    )
     number_of_employees = models.IntegerField(default=0)
     creation_date = models.DateField(null=True)
-    
+
     is_active = models.BooleanField(default=True)
-    
-    
+
+
 class Profile(models.Model):
     def __str__(self):
-            return self.name
-                    
+        return self.name
+
     name = models.CharField(max_length=100, unique=True)
