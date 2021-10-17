@@ -95,7 +95,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class Company(models.Model):
     def __str__(self):
-            return self.company_name
+            return self.name
                     
     name = models.CharField(max_length=100)
     registration_number = models.CharField(max_length=255, unique=True)
@@ -110,3 +110,8 @@ class Company(models.Model):
     creation_date = models.DateField(null=True)
     
     
+class Profile(models.Model):
+    def __str__(self):
+            return self.name
+                    
+    name = models.CharField(max_length=100, unique=True)
