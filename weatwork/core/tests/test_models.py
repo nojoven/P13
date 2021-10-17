@@ -60,3 +60,5 @@ class ModelTests(TestCase):
         profile.save()
         
         self.assertEqual(profile.name, name.lower())
+        
+    
