@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model  # Better than importing the model itself
 
 from ..models import Company
-from core.constants import INDUSTRY_LIST
+from core.constants import INDUSTRY_LIST, USERS_PROFILES
 
 class ModelTests(TestCase):
     
@@ -39,13 +39,24 @@ class ModelTests(TestCase):
 
     # Test Company
     def test_create_company(self):
-        """Test creating a new user with an email is successful"""
+        """Test creating a new company is successful"""
         registration_number="0531"
         name = "The Builders"
         industry = "Software Engineering"
         company = Company.objects.create(name=name, industry=industry.lower(), registration_number=registration_number)
 
+        company.save()
+        
         self.assertEqual(company.name, name)
         self.assertEqual(company.registration_number, registration_number)
         self.assertTrue(company.industry in INDUSTRY_LIST)  # Because password is encrypted
     
+    
+    # Test Profile Type
+    def test_create_profile_type(self):
+        """Test creating a new profile type"""
+        name="worker"
+        profile = Profile.objects.create(name=name, unique=True)
+        profile.save()
+        
+        self.assertEqual(profile.name, name)
