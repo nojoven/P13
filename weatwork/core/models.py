@@ -109,6 +109,8 @@ class Company(models.Model):
     number_of_employees = models.IntegerField(default=0)
     creation_date = models.DateField(null=True)
     
+    is_active = models.BooleanField(default=True)
+    
     
 class Profile(models.Model):
     def __str__(self):
