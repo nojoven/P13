@@ -71,3 +71,5 @@ docker-compose run weatwork sh -c "python manage.py makemigrations <*YOUR_APP_NA
 - https://docs.djangoproject.com/en/3.2/ref/django-admin/#django.core.management.call_command
 
 - https://github.com/django/django/blob/11b8c30b9e02ef6ecb996ad3280979dfeab700fa/django/db/utils.py#L195
+
+- https://docs.djangoproject.com/en/3.2/howto/custom-management-commands/

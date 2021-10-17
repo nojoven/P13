@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model  # Better than importing the model itself
 
+from core.constants import INDUSTRY_LIST
 
 class ModelTests(TestCase):
     
@@ -36,4 +37,13 @@ class ModelTests(TestCase):
         self.assertTrue(user.is_staff)
 
     # Test Company
+    def test_create_company(self):
+        """Test creating a new user with an email is successful"""
+
+        name = "The Builders"
+        industry = "Software Engineering"
+        company = Company.objects.create(name=name, industry=industry.lower())
+
+        self.assertEqual(company.name, name)
+        self.assertTrue(company.industry in INDUSTRY_LIST)  # Because password is encrypted
     

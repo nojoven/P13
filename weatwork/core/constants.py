@@ -1,0 +1,1 @@
+INDUSTRY_LIST = ["software engineering", "cinema"]
