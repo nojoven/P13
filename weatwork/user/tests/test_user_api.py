@@ -8,9 +8,9 @@ from rest_framework import status # Adds readability
 
 CREATE_USER_URL = reverse('user:create')
 
-# Helper function
 def create_user(**params):
-    return get_user_model().objects.create(**params)
+    """Helper function to create new user"""
+    return get_user_model().objects.create_user(**params)
 
 
 class  PublicUserApiTests(TestCase):
@@ -41,20 +41,22 @@ class  PublicUserApiTests(TestCase):
         """Tests if creating a anready created user fails"""
         payload = {
             'email': 'test@md.com',
-            'password': 'testpass'
+            'password': 'testpass',
+            'name': 'Test'
         }
         create_user(**payload)
         
-        res = self.client.post(CREATE_USER_URL, payload=payload)
+        res = self.client.post(CREATE_USER_URL, payload)
         
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
         
     
     def test_password_too_short(self):
-        """Tests that password is longer than 10 characters"""
+        """Tests that password is longer than 5 characters"""
         payload = {
             'email': 'test@md.com',
-            'password': 'pw'
+            'password': 'pw',
+            'name': 'Test'
         }
         res = self.client.post(CREATE_USER_URL, payload)
         
@@ -65,7 +67,3 @@ class  PublicUserApiTests(TestCase):
         ).exists()
         
         self.assertFalse(user_exists)
-        
-        
-        
-        
