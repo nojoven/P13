@@ -119,4 +119,27 @@ class Profile(models.Model):
     def __str__(self):
         return self.name
 
-    name = models.CharField(max_length=100, unique=True)
+    type = models.CharField(max_length=100, unique=True)
+
+
+class Tag(models.Model):
+    def __str__(self):
+        return self.name
+
+    name = models.CharField(max_length=70, unique=True)
+    language = models.CharField(max_length=20, unique=True)
+    
+
+class Media(models.Model):
+    def __str__(self):
+        return self.name
+
+    name = models.CharField(max_length=100)
+    media_type = models.CharField(max_length=100)
+    gallery = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now=True)
+    path = models.URLField(max_length=255, blank=True)
+    likes = models.IntegerField()
+    dislikes = models.IntegerField()
+    
+    is_active = models.BooleanField(default=True)
