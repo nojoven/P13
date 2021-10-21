@@ -136,7 +136,8 @@ class Media(models.Model):
 
     name = models.CharField(max_length=100)
     media_type = models.CharField(max_length=100)
-    gallery = models.CharField(max_length=100)
+    gallery_name = models.CharField(max_length=255)
+    gallery_type = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now=True)
     path = models.URLField(max_length=255, blank=True)
     likes = models.IntegerField()
