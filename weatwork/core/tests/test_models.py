@@ -61,7 +61,7 @@ class ModelTests(TestCase):
     # Test Profile Type
     def test_create_profile_type(self):
         """Test creating a new profile type"""
-        name = "worker"
+        type = "worker"
         profile = Profile.objects.create(name=name.lower())
         profile.save()
 

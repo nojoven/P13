@@ -126,8 +126,8 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
-    name = models.CharField(max_length=70, unique=True)
-    language = models.CharField(max_length=20, unique=True)
+    name = models.CharField(max_length=70)
+    language = models.CharField(max_length=20)
     
 
 class Media(models.Model):
@@ -135,6 +135,7 @@ class Media(models.Model):
         return self.name
 
     name = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, blank=True)
     media_type = models.CharField(max_length=100)
     gallery_name = models.CharField(max_length=255)
     gallery_type = models.CharField(max_length=100)
