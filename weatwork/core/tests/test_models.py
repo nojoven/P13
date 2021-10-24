@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model  # Better than importing the model itself
 
-from ..models import Company, Profile
+from ..models import Company, Profile, Tag, Media, Gallery, Job, Recommendation, Favorite, FeedPost
 from core.constants import INDUSTRY_LIST, USERS_PROFILES
 
 
@@ -67,13 +67,24 @@ class ModelTests(TestCase):
 
         self.assertEqual(profile.name, name.lower())
 
-    # Test Profile Type
-    def test_create_profile_type(self):
-        """Test creating a new profile type"""
-        name = "worker"
-        profile = Profile.objects.create(name=name.lower())
-        profile.save()
+    # Test Tag
+    def test_create_tag(self):
+        """Test creating a new tag"""
+        author = "testauthor"
+        name = "happyworker"
+        language = "FR"
+        
+        tag = Tag.objects.create(
+            author=author.lower(),
+            name=name.lower(),
+            language=language.lower()
+        )
+        tag.save()
 
-        self.assertEqual(profile.name, name.lower())
+        self.assertEqual(tag.author, author.lower())
+        self.assertEqual(tag.name, name.lower())
+        self.assertEqual(tag.language, language.lower())
+        
+        
 
     
