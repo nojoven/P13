@@ -86,7 +86,7 @@ class ModelTests(TestCase):
         self.assertEqual(tag.name, name.lower())
         self.assertEqual(tag.language, language.lower())
     
-# Test Media
+    # Test Media
     def test_create_media(self):
         """Test creating a new media"""
         name = "testmedia"
@@ -97,3 +97,15 @@ class ModelTests(TestCase):
         media.save()
 
         self.assertEqual(media.name, name.lower())
+
+    # Test Gallery
+    def test_create_gallery(self):
+        """Test creating a new gallery"""
+        name = "Test Gallery"
+        
+        gallery = Gallery.objects.create(
+            name=name.lower()
+        )
+        gallery.save()
+
+        self.assertEqual(gallery.name, name.lower())
