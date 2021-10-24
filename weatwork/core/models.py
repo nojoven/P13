@@ -144,8 +144,8 @@ class Media(models.Model):
     gallery_type = models.CharField(max_length=100, blank=True)
     created_at = models.DateTimeField(auto_now=True, blank=True)
     path = models.FileField(null=True)
-    likes = models.IntegerField()
-    dislikes = models.IntegerField()
+    likes = models.IntegerField(default=0)
+    dislikes = models.IntegerField(default=0)
     
     is_active = models.BooleanField(default=True)
 
@@ -206,7 +206,7 @@ class FeedPost(models.Model):
     author = models.CharField(max_length=255, blank=True)
     text = models.CharField(max_length=255, blank=True)
     publication_date = models.DateTimeField(auto_now=True)
-    likes = models.IntegerField()
-    dislikes = models.IntegerField()
+    likes = models.IntegerField(default=0)
+    dislikes = models.IntegerField(default=0)
     
     is_active = models.BooleanField(default=True)

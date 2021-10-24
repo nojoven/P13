@@ -67,6 +67,7 @@ class ModelTests(TestCase):
 
         self.assertEqual(profile.name, name.lower())
 
+        
     # Test Tag
     def test_create_tag(self):
         """Test creating a new tag"""
@@ -84,7 +85,15 @@ class ModelTests(TestCase):
         self.assertEqual(tag.author, author.lower())
         self.assertEqual(tag.name, name.lower())
         self.assertEqual(tag.language, language.lower())
-        
-        
-
     
+# Test Media
+    def test_create_media(self):
+        """Test creating a new media"""
+        name = "testmedia"
+        
+        media = Media.objects.create(
+            name=name.lower()
+        )
+        media.save()
+
+        self.assertEqual(media.name, name.lower())
