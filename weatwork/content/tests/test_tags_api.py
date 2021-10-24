@@ -44,7 +44,7 @@ class PrivateTagsApiTests(TestCase):
         
         res = self.client.get(TAGS_URL)
         
-        tags = Tag.objects.all().order_by('name')
+        tags = Tag.objects.all().order_by('-name')
         serializer = TagSerializer(tags, many=True) # Many argument for more than one object
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
@@ -57,10 +57,10 @@ class PrivateTagsApiTests(TestCase):
             'password9876'
         )
         
-        Tag.objects.create(user=user2, name='optimal')
+        Tag.objects.create(author=user2, name='optimal')
         
         # Creat a tag for the user 1 which is authenticated
-        tag = Tag.objects.create(user=self.user, name='JobSeekersForce')
+        tag = Tag.objects.create(author=self.user, name='JobSeekersForce')
         
         res = self.client.get(TAGS_URL)
         
