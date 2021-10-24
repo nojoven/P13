@@ -143,7 +143,7 @@ class Media(models.Model):
     gallery_name = models.CharField(max_length=255, blank=True)
     gallery_type = models.CharField(max_length=100, blank=True)
     created_at = models.DateTimeField(auto_now=True, blank=True)
-    path = models.URLField(max_length=255, blank=True)
+    path = models.FileField(null=True)
     likes = models.IntegerField()
     dislikes = models.IntegerField()
     
