@@ -66,3 +66,14 @@ class ModelTests(TestCase):
         profile.save()
 
         self.assertEqual(profile.name, name.lower())
+
+    # Test Profile Type
+    def test_create_profile_type(self):
+        """Test creating a new profile type"""
+        name = "worker"
+        profile = Profile.objects.create(name=name.lower())
+        profile.save()
+
+        self.assertEqual(profile.name, name.lower())
+
+    

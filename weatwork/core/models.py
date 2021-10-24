@@ -35,9 +35,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    # username = models.CharField(max_length=255, unique=True)
+    # username = models.CharField(max_length=255, blank=True)
     name = models.CharField(max_length=255, null=True, default=None)
     nickname = models.CharField(max_length=255)
+    linkedin_id = models.CharField(max_length=255, null=True)
     linkedin = models.URLField(max_length=255, blank=True)
     instagram = models.URLField(max_length=255, blank=True)
     youtube = models.URLField(max_length=255, blank=True)
@@ -80,6 +81,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_showing_given_recommendations = models.BooleanField(default=True)
     is_showing_received_recommendations = models.BooleanField(default=True)
     is_showing_received_recommendations = models.BooleanField(default=True)
+    is_showing_linkedin_data = models.BooleanField(default=True)
 
     is_download_allowed = models.BooleanField(default=True)
 
@@ -125,7 +127,7 @@ class Profile(models.Model):
 class Tag(models.Model):
     def __str__(self):
         return self.name
-
+    user = models.CharField(max_length=255, blank=True)
     name = models.CharField(max_length=70)
     language = models.CharField(max_length=20)
     
@@ -134,13 +136,76 @@ class Media(models.Model):
     def __str__(self):
         return self.name
 
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, blank=True)
+    author = models.CharField(max_length=255, blank=True)
     title = models.CharField(max_length=100, blank=True)
-    media_type = models.CharField(max_length=100)
-    gallery_name = models.CharField(max_length=255)
-    gallery_type = models.CharField(max_length=100)
-    created_at = models.DateTimeField(auto_now=True)
+    media_type = models.CharField(max_length=100, blank=True)
+    gallery_name = models.CharField(max_length=255, blank=True)
+    gallery_type = models.CharField(max_length=100, blank=True)
+    created_at = models.DateTimeField(auto_now=True, blank=True)
     path = models.URLField(max_length=255, blank=True)
+    likes = models.IntegerField()
+    dislikes = models.IntegerField()
+    
+    is_active = models.BooleanField(default=True)
+
+
+class Gallery(models.Model):
+    def __str__(self):
+        return self.name
+
+    name = models.CharField(max_length=100, blank=True)
+    author = models.CharField(max_length=255, blank=True)
+    
+    is_active = models.BooleanField(default=True)
+
+
+class Job(models.Model):
+    def __str__(self):
+        return self.name
+
+    title = models.CharField(max_length=255, blank=True)
+    worker_name = models.CharField(max_length=255, blank=True)
+    company = models.CharField(max_length=255, blank=True)
+    description = models.CharField(max_length=500, blank=True)
+    start_date = models.DateField(null=True)
+    end_date = models.DateField(null=True)
+    
+    is_current_job = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)
+
+
+class Recommendation(models.Model):
+    def __str__(self):
+        return self.name
+
+    title = models.CharField(max_length=255, blank=True)
+    text = models.CharField(max_length=255, blank=True)
+    author = models.CharField(max_length=255, blank=True)
+    recipient = models.CharField(max_length=255, blank=True)
+    
+    is_approved = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)
+
+
+class Favorite(models.Model):
+    def __str__(self):
+        return self.name
+
+    favorite_type = models.CharField(max_length=255, blank=True)
+    text = models.CharField(max_length=255, blank=True)
+    user = models.CharField(max_length=255, blank=True)
+    
+    is_active = models.BooleanField(default=True)
+
+
+class FeedPost(models.Model):
+    def __str__(self):
+        return self.name
+
+    author = models.CharField(max_length=255, blank=True)
+    text = models.CharField(max_length=255, blank=True)
+    publication_date = models.DateTimeField(auto_now=True)
     likes = models.IntegerField()
     dislikes = models.IntegerField()
     

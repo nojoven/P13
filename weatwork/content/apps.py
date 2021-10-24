@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class MediaConfig(AppConfig):
+class ContentConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'media'
+    name = 'content'
