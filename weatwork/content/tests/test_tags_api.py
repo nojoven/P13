@@ -39,12 +39,12 @@ class PrivateTagsApiTests(TestCase):
         
     def test_retrieve_tags(self):
         """Test retrieving tags"""
-        Tag.objects.create(user=self.user, name='Futuristic')
-        Tag.objects.create(user=self.user, name='Testival')
+        Tag.objects.create(author=self.user, name='Futuristic')
+        Tag.objects.create(author=self.user, name='Testival')
         
         res = self.client.get(TAGS_URL)
         
-        tags = Tag.objects.all().order_by('-name')
+        tags = Tag.objects.all().order_by('-author')
         serializer = TagSerializer(tags, many=True) # Many argument for more than one object
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
