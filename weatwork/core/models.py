@@ -127,7 +127,7 @@ class Profile(models.Model):
 class Tag(models.Model):
     def __str__(self):
         return self.name
-    user = models.CharField(max_length=255, blank=True)
+    author = models.CharField(max_length=255, blank=True)
     name = models.CharField(max_length=70)
     language = models.CharField(max_length=20)
     
