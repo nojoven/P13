@@ -109,3 +109,30 @@ class ModelTests(TestCase):
         gallery.save()
 
         self.assertEqual(gallery.name, name.lower())
+    
+    # Test Job
+    def test_create_job(self):
+        """Test creating a new job (woek experience)"""
+        name = "Job Name"
+        
+        job = Gallery.objects.create(
+            name=name.lower()
+        )
+        job.save()
+
+        self.assertEqual(job.name, name.lower())
+        
+    # Test Recommendation
+    def test_create_recommendation(self):
+        """Test creating a new job (woek experience)"""
+        title = "Test Title"
+        text = "This test dev is genial. I endorse him."
+
+        
+        recommendation = Recommendation.objects.create(
+            title=title.lower(), text=text
+        )
+        recommendation.save()
+
+        self.assertEqual(recommendation.title, title.lower())
+        self.assertEqual(recommendation.text, text)
