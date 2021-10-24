@@ -35,6 +35,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
+    about = models.TextField(blank=True)
     # username = models.CharField(max_length=255, blank=True)
     name = models.CharField(max_length=255, null=True, default=None)
     nickname = models.CharField(max_length=255)
@@ -106,7 +107,7 @@ class Company(models.Model):
     headquarters_address = models.CharField(max_length=200)
     headquarters_zip_code = models.CharField(max_length=200)
     motto = models.CharField(max_length=255)
-    decription = models.CharField(max_length=255)
+    decription = models.TextField(max_length=255)
     logo_url = models.CharField(
         max_length=500,
         default="https://cdn.pixabay.com/photo/2019/07/26/20/52/man-4365597_960_720.png",
@@ -167,7 +168,7 @@ class Job(models.Model):
     title = models.CharField(max_length=255, blank=True)
     worker_name = models.CharField(max_length=255, blank=True)
     company = models.CharField(max_length=255, blank=True)
-    description = models.CharField(max_length=500, blank=True)
+    description = models.TextField(max_length=500, blank=True)
     start_date = models.DateField(null=True)
     end_date = models.DateField(null=True)
     
@@ -180,7 +181,7 @@ class Recommendation(models.Model):
         return self.name
 
     title = models.CharField(max_length=255, blank=True)
-    text = models.CharField(max_length=255, blank=True)
+    text = models.TextField(max_length=255, blank=True)
     author = models.CharField(max_length=255, blank=True)
     recipient = models.CharField(max_length=255, blank=True)
     
@@ -191,10 +192,6 @@ class Recommendation(models.Model):
 class Favorite(models.Model):
     def __str__(self):
         return self.name
-
-    favorite_type = models.CharField(max_length=255, blank=True)
-    text = models.CharField(max_length=255, blank=True)
-    user = models.CharField(max_length=255, blank=True)
     
     is_active = models.BooleanField(default=True)
 
