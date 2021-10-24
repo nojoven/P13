@@ -5,6 +5,9 @@ from ..models import Company, Profile, Tag, Media, Gallery, Job, Recommendation,
 from core.constants import INDUSTRY_LIST, USERS_PROFILES
 
 
+def sample_user(email='testwork@md.com', password='testpass'):
+    return get_user_model().objects.create_user(email, password)
+
 class ModelTests(TestCase):
 
     # Test User
@@ -70,20 +73,18 @@ class ModelTests(TestCase):
         
     # Test Tag
     def test_create_tag(self):
-        """Test creating a new tag"""
-        author = "testauthor"
+        """Test creating a new tag and its string representation"""
         name = "happyworker"
         language = "FR"
         
         tag = Tag.objects.create(
-            author=author.lower(),
+            author=sample_user(),
             name=name.lower(),
             language=language.lower()
         )
         tag.save()
 
-        self.assertEqual(tag.author, author.lower())
-        self.assertEqual(tag.name, name.lower())
+        self.assertEqual(str(tag), tag.name)
         self.assertEqual(tag.language, language.lower())
     
     # Test Media

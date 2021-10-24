@@ -4,6 +4,7 @@ from django.contrib.auth.models import (
     BaseUserManager,
     PermissionsMixin,
 )
+from django.conf import settings
 
 
 class UserManager(BaseUserManager):
@@ -128,7 +129,11 @@ class Profile(models.Model):
 class Tag(models.Model):
     def __str__(self):
         return self.name
-    author = models.CharField(max_length=255, blank=True)
+    
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
     name = models.CharField(max_length=70)
     language = models.CharField(max_length=20)
     
