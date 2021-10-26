@@ -21,3 +21,4 @@ pytest-cov==2.12.1
 pytest-picked==0.4.6
 pytest-randomly==3.10.1
 pillow==8.3.2
+requests==2.26.0
