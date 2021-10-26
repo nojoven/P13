@@ -6,7 +6,10 @@ from core import views
 app_name = 'core'
 
 urlpatterns = [
-    path('index/', views.index, name='index'),
+    # /home
     path('home/', views.home, name='home'),
+    
+    # /home/<int>
+    path('user/<int:user_id>/', views.user, name='user'),
     # path('me/', views.ManageUserView.as_view(), name='me'),
 ]

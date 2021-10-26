@@ -18,3 +18,10 @@ class ViewsTests(TestCase):
 
         res = self.client.get('/home/')
         self.assertEqual(res.status_code, 200)
+    
+    # Test User View
+    def test_home_page_available(self):
+        """Test requesting the user page"""
+
+        res = self.client.get('/user/1/')
+        self.assertEqual(res.status_code, 200)
