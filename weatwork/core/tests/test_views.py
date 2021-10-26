@@ -5,12 +5,20 @@ from django.urls import reverse
 from ..models import Company, Profile, Tag, Media, Gallery, Job, Recommendation, Favorite, FeedPost
 from core.constants import INDUSTRY_LIST, USERS_PROFILES
 
+def create_user(**params):
+    """Helper function to create new user"""
+    return get_user_model().objects.create_user(**params)
 
-def sample_user(email='testwork@md.com', password='testpass'):
-    return get_user_model().objects.create_user(email, password)
 
 class ViewsTests(TestCase):
     client = Client()
+    
+    def setUp(self):
+        self.user = create_user(
+            email='maintainer@md.com',
+            password='testpass',
+            name='testname'
+        )
     
     # Test Home View
     def test_home_page_available(self):
@@ -22,6 +30,6 @@ class ViewsTests(TestCase):
     # Test User View
     def test_home_page_available(self):
         """Test requesting the user page"""
-
-        res = self.client.get('/user/1/')
+        user_id = self.user.id
+        res = self.client.get(f"/user/{user_id}/")
         self.assertEqual(res.status_code, 200)
