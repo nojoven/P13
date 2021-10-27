@@ -28,7 +28,7 @@ class ViewsTests(TestCase):
         self.assertEqual(res.status_code, 200)
     
     # Test User View
-    def test_home_page_available(self):
+    def test_user_page_available(self):
         """Test requesting the user page"""
         user_id = self.user.id
         res = self.client.get(f"/user/{user_id}/")
