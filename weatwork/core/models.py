@@ -37,6 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     about = models.TextField(blank=True)
+    user_image = models.ImageField(default="https://cdn.pixabay.com/photo/2019/07/26/20/52/man-4365597_960_720.png")
     # username = models.CharField(max_length=255, blank=True)
     name = models.CharField(max_length=255, null=True, default=None)
     nickname = models.CharField(max_length=255)
