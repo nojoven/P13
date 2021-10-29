@@ -1,11 +1,19 @@
-from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import redirect, render
+
+from django.contrib.auth import  get_user_model
+from django.contrib import messages
 
 from rest_framework import generics, authentication, permissions
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
 
 from user.serializers import UserSerializer, AuthTokenSerializer
+
+from .forms import RegistrationForm
+
+def create_user(**params):
+    """Helper function to create new user"""
+    return get_user_model().objects.create_user(**params)
 
 class CreateUserView(generics.CreateAPIView):
     """Create a new user in the system"""
@@ -30,5 +38,12 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
 
 
 def register(request):
-    form = UserCreationForm()
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data.get('email')
+            messages.success(request, f"Welcome ! Your account is created with your email address {email} !")
+            return redirect('core:home')
+    else:        
+        form = RegistrationForm()
     return render(request, 'user/register.html', {'form': form})
