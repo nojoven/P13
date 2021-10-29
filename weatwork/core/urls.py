@@ -9,10 +9,13 @@ app_name = 'core'
 
 urlpatterns = [
     url(r'^', include('django.contrib.auth.urls')),
+    
     # /home
     path('home/', views.home, name='home'),
     
-    # /home/<int>
+    # /showcase/user/<int>
     path('showcase/user/<int:user_id>/', views.showcase, name='showcase'),
-    # path('me/', views.ManageUserView.as_view(), name='me'),
+    
+    # add media file
+    path('addfile/', views.add_file, name='add_file'),
 ]
