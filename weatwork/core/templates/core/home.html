@@ -19,14 +19,14 @@
                 <div class="col-md-4">
                     <ul style="list-style-type: none">
                         <li>
-                            <a href="{% url 'core:showcase' user.id %}"><h3>{{ user.name }}</h3></a>
+                            <h3>{{ user.name }}</h3>
                             <hr>
                             <h5>{{ user.email }}</h5>
                         </li>
                     </ul>
                 </div>                
                 <div class="col-md-2">
-
+                    <a href="{% url 'core:showcase' user.id %}" class="btn btn-success">Details</a>
                 </div>
             </div>
         {% endfor %}

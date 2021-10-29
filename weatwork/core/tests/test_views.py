@@ -33,3 +33,9 @@ class ViewsTests(TestCase):
         user_id = self.user.id
         res = self.client.get(f"/showcase/user/{user_id}/")
         self.assertEqual(res.status_code, 200)
+    
+    # Test User Media Upload Form View
+    def test_media_upload_form_page(self):
+        """Test requesting the media upload form page"""
+        res = self.client.get(f"/showcase/media/upload")
+        self.assertEqual(res.status_code, 200)
