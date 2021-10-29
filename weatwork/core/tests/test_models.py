@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model  # Better than importing the model itself
 
-from ..models import Company, Profile, Tag, Media, Gallery, Job, Recommendation, Favorite, FeedPost
+from ..models import Company, Profile, Tag, Media, Gallery, WorkExperience, Recommendation, Favorite, FeedPost
 from core.constants import INDUSTRY_LIST, USERS_PROFILES
 
 
