@@ -26,6 +26,16 @@ def add_file(request):
 def update_file(request, file_id):
     media = Media.objects.get(id=file_id)
     
+    form = MediaForm(request.POST or None, request.FILES or None, instance=media)
+    if form.is_valid():
+        form.save()
+        return redirect('core:home')
+    
+    return render(request, 'core/media-form.html', {'form': form, 'media': media})
+
+def delete_file(request, file_id):
+    media = Media.objects.get(id=file_id)
+    
     form = MediaForm(request.POST or None, instance=media)
     if form.is_valid():
         form.save()
@@ -33,4 +43,4 @@ def update_file(request, file_id):
     
     return render(request, 'core/media-form.html', {'form': form, 'media': media})
 
-    
+   
