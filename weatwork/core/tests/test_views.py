@@ -41,8 +41,9 @@ class ViewsTests(TestCase):
         self.assertEqual(res.status_code, 200)
 
     # Test Media Edit Form View
-    def test_media_edit_form_page(self):
-        """Test requesting the media edition form page"""
-        file_id = 1
-        res = self.client.get(f"/editfile/{file_id}/")
-        self.assertEqual(res.status_code, 200)
+    # def test_media_edit_form_page(self):
+    #    """Test requesting the media edition form page"""
+    #    file_id = 1
+    #    res = self.client.get(f"/editfile/{file_id}/")
+    #    self.assertEqual(res.status_code, 200)
+    
