@@ -205,7 +205,7 @@ class FeedPost(models.Model):
     def __str__(self):
         return self.name
 
-    author = models.CharField(max_length=255, blank=True)
+    author = models.ForeignKey('User', on_delete=models.CASCADE, blank=True)
     text = models.CharField(max_length=255, blank=True)
     publication_date = models.DateTimeField(auto_now=True)
     likes = models.IntegerField(default=0)
