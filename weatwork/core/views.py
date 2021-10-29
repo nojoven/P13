@@ -41,5 +41,3 @@ def delete_file(request, file_id):
         return redirect('core:home')
     
     return render(request, 'core/confirm-file-delete.html', {'media': media})
-
-   
