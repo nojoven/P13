@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import User
-from .forms import FileUploadForm
+from .models import User, Media
+from .forms import MediaForm
 
 def home(request):
     users = User.objects.all().filter(is_superuser=False, is_active=True)
@@ -16,9 +16,21 @@ def showcase(request, user_id):
     return render(request, 'core/showcase.html', context)
 
 def add_file(request):
-    form = FileUploadForm(request.POST or None, request.FILES)
+    form = MediaForm(request.POST or None, request.FILES)
     if form.is_valid():
         form.save()
         return redirect('core:home')
     
-    return render(request, 'core/media-upload-form.html', {'form': form})
+    return render(request, 'core/media-form.html', {'form': form})
+
+def update_file(request, file_id):
+    media = Media.objects.get(id=file_id)
+    
+    form = MediaForm(request.POST or None, instance=media)
+    if form.is_valid():
+        form.save()
+        return redirect('core:home')
+    
+    return render(request, 'core/media-form.html', {'form': form, 'media': media})
+
+    

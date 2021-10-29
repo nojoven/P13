@@ -18,4 +18,7 @@ urlpatterns = [
     
     # add media file
     path('addfile/', views.add_file, name='add_file'),
+    
+    # edit media file
+    path('editfile/<int:file_id>/', views.update_file, name='update_file'),
 ]

@@ -10,7 +10,7 @@ def sample_user(email='testwork@md.com', password='testpass'):
 
 class ModelTests(TestCase):
 
-    # Test User
+    # Test User - Create
     def test_create_user_email_successful(self):
         """Test creating a new user with an email is successful"""
 
@@ -40,6 +40,10 @@ class ModelTests(TestCase):
         )
         self.assertTrue(user.is_superuser)  # is_superuser() comes from PermissionsMixin
         self.assertTrue(user.is_staff)
+
+
+    # Test User - Update
+    
 
     # Test Company
     def test_create_company(self):
@@ -87,7 +91,7 @@ class ModelTests(TestCase):
         self.assertEqual(str(tag), tag.name)
         self.assertEqual(tag.language, language.lower())
     
-    # Test Media
+    # Test Media - Create
     def test_create_media(self):
         """Test creating a new media"""
         name = "testmedia"
@@ -98,6 +102,9 @@ class ModelTests(TestCase):
         media.save()
 
         self.assertEqual(media.name, name.lower())
+    
+    # Test Media - Update
+    
 
     # Test Gallery
     def test_create_gallery(self):
