@@ -65,7 +65,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     current_company_website = models.URLField(max_length=255)
     current_company_address = models.CharField(max_length=255)
     current_company_activity_area = models.CharField(max_length=255)
-    current_job = models.CharField(max_length=255)
     current_job_start_date = models.DateField(null=True)
     next_availability_date = models.DateField(null=True)
     work_experience_in_months = models.IntegerField(default=0)
@@ -82,7 +81,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_showing_degrees = models.BooleanField(default=True)
     is_showing_certifications = models.BooleanField(default=True)
     is_showing_given_recommendations = models.BooleanField(default=True)
-    is_showing_received_recommendations = models.BooleanField(default=True)
     is_showing_received_recommendations = models.BooleanField(default=True)
     is_showing_linkedin_data = models.BooleanField(default=True)
 
