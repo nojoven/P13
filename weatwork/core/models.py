@@ -166,12 +166,12 @@ class Gallery(models.Model):
     is_active = models.BooleanField(default=True)
 
 
-class Job(models.Model):
+class WorkExperience(models.Model):
     def __str__(self):
         return self.name
 
     title = models.CharField(max_length=255, blank=True)
-    worker_name = models.CharField(max_length=255, blank=True)
+    worker = models.ForeignKey('User', on_delete=models.CASCADE, blank=True)
     company = models.CharField(max_length=255, blank=True)
     description = models.TextField(max_length=500, blank=True)
     start_date = models.DateField(null=True)
