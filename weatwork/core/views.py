@@ -36,11 +36,10 @@ def update_file(request, file_id):
 def delete_file(request, file_id):
     media = Media.objects.get(id=file_id)
     
-    form = MediaForm(request.POST or None, instance=media)
-    if form.is_valid():
-        form.save()
+    if request.method == 'POST':
+        media.delete()
         return redirect('core:home')
     
-    return render(request, 'core/media-form.html', {'form': form, 'media': media})
+    return render(request, 'core/confirm-file-delete.html', {'media': media})
 
    

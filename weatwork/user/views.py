@@ -1,3 +1,6 @@
+from django.shortcuts import render
+from django.contrib.auth.forms import UserCreationForm
+
 from rest_framework import generics, authentication, permissions
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
@@ -24,3 +27,8 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         """Fetches the authenticated user"""
         return self.request.user
+
+
+def register(request):
+    form = UserCreationForm()
+    return render(request, 'user/register.html', {'form': form})

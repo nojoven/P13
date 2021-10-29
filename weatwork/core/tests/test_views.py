@@ -47,3 +47,8 @@ class ViewsTests(TestCase):
     #    res = self.client.get(f"/editfile/{file_id}/")
     #    self.assertEqual(res.status_code, 200)
     
+    # Test Media Confirm Delete View
+    # def test_media_confirm_delete_page(self):
+    #    """Test requesting the media deletion confirm form page"""
+    #    res = self.client.get(f"/delfile/1")
+    #    self.assertEqual(res.status_code, 200)
