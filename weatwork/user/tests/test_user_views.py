@@ -30,5 +30,5 @@ class ViewsTests(TestCase):
     # Test Profile View
     def test_profile_page_available(self):
         """Test requesting the profile page"""
-        res = self.client.get('user/{user_id}/profile/')
+        res = self.client.get('/profile/')
         self.assertEqual(res.status_code, 200)
