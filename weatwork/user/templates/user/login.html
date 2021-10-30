@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="card">
+                    <div class="card-header text-white bg-info">
+                        <div class="card-title">Login</div>
+                    </div>
+                    <div class="card-body">
+                        <form class="text-center" method="POST" action="">
+                            {% csrf_token %}
+                            
+                            <!-- {{ form }} -->
+                            {% for field in form %}
+                            
+                                <div class="form-group">
+                                    {{ field.name }}
+                                    {{ field }}
+                                </div>
+                                <br>
+                            {% endfor %}
+                            <br>
+                            <button class="btn-info" type="submit">Login</button>
+                            <a href="{% url 'register' %}">Sign Up</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
