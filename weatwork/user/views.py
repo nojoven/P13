@@ -9,6 +9,7 @@ from rest_framework.settings import api_settings
 
 from user.serializers import UserSerializer, AuthTokenSerializer
 
+from core.models import User
 from .forms import RegistrationForm
 
 def create_user(**params):
@@ -39,7 +40,8 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
 
 def register(request):
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
+        user = User()
+        form = RegistrationForm(request.POST or None, request.FILES or None, instance=user)
         if form.is_valid():
             form.save()
             email = form.cleaned_data.get('email')
