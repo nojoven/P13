@@ -9,12 +9,6 @@ def home(request):
     }
     return render(request, 'core/home.html', context)
 
-def showcase(request, user_id):    
-    user = User.objects.get(pk=user_id)
-    context = {'user' : user}
-    
-    return render(request, 'user/showcase.html', context)
-
 def add_file(request):
     form = MediaForm(request.POST or None, request.FILES)
     if form.is_valid():

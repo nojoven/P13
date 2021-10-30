@@ -13,9 +13,6 @@ urlpatterns = [
     # /home
     path('home/', views.home, name='home'),
     
-    # /showcase/user/<int>
-    path('showcase/user/<int:user_id>/', views.showcase, name='showcase'),
-    
     # add media file
     path('addfile/', views.add_file, name='add_file'),
     
