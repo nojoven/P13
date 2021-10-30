@@ -41,6 +41,7 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
+            form.save()
             email = form.cleaned_data.get('email')
             messages.success(request, f"Welcome ! Your account is created with your email address {email} !")
             return redirect('core:home')
