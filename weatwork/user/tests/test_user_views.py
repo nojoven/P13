@@ -26,15 +26,5 @@ class ViewsTests(TestCase):
         """Test requesting the register page"""
         res = self.client.get('/register/')
         self.assertEqual(res.status_code, 200)
-        
-    # Test Login View
-    def test_login_page_available(self):
-        """Test requesting the login page"""
-        res = requests.get('http://weatwork:8000/login')
-        self.assertEqual(res.status_code, 200)
     
-    # Test Logout View
-    def test_logout_page_available(self):
-        """Test requesting the logout page"""
-        res = requests.get('http://weatwork:8000/logout')
-        self.assertEqual(res.status_code, 200)
+    
