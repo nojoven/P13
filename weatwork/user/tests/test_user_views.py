@@ -28,7 +28,7 @@ class ViewsTests(TestCase):
         self.assertEqual(res.status_code, 200)
     
     # Test Profile View
-    def test_profile_page_available(self):
-        """Test requesting the profile page"""
-        res = self.client.get('/profile/')
-        self.assertEqual(res.status_code, 200)
+    # def test_profile_page_available(self):
+    #    """Test requesting the profile page"""
+    #    res = self.client.get('/profile/')
+    #    self.assertEqual(res.status_code, 200)
