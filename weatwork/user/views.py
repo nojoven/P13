@@ -50,3 +50,6 @@ def register(request):
     else:        
         form = RegistrationForm()
     return render(request, 'user/register.html', {'form': form})
+
+def profilepage(request):
+    return render(request, 'user/profile.html')

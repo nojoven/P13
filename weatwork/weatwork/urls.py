@@ -27,4 +27,5 @@ urlpatterns = [
     path("api/content/", include("content.urls")),
     path("login", authentication_views.LoginView.as_view(template_name='user/login.html'), name='login'),
     path("logout", authentication_views.LogoutView.as_view(template_name='user/logout.html'), name='logout'),
+    path("profile/", user_views.profilepage, name='profile'),
 ]
