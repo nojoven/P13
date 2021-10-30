@@ -157,6 +157,13 @@ class Media(models.Model):
     is_active = models.BooleanField(default=True)
 
 
+class MediaType(models.Model):
+    def __str__(self):
+        return self.name
+
+    name = models.CharField(max_length=255, unique=True, null=True)
+
+
 class Gallery(models.Model):
     def __str__(self):
         return self.name
