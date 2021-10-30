@@ -46,7 +46,7 @@ def register(request):
             form.save()
             email = form.cleaned_data.get('email')
             messages.success(request, f"Welcome ! Your account is created with your email address {email} !")
-            return redirect('core:home')
+            return redirect('login')
     else:        
         form = RegistrationForm()
     return render(request, 'user/register.html', {'form': form})
