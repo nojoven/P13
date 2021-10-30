@@ -72,7 +72,7 @@ class ModelTests(TestCase):
         profile_type = ProfileType.objects.create(name=name.lower())
         profile_type.save()
 
-        self.assertEqual(profile.name, name.lower())
+        self.assertEqual(profile_type.name, name.lower())
 
         
     # Test Tag
