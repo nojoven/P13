@@ -2,7 +2,7 @@ from django.test import TestCase, Client
 from django.contrib.auth import get_user_model  # Better than importing the model itself
 from django.urls import reverse
 
-from ..models import Company, Profile, Tag, Media, Gallery, WorkExperience, Recommendation, Favorite, FeedPost
+from ..models import Company, ProfileType, Tag, Media, Gallery, WorkExperience, Recommendation, Favorite, FeedPost
 from core.constants import INDUSTRY_LIST, USERS_PROFILES
 
 def create_user(**params):

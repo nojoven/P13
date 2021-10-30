@@ -129,5 +129,5 @@ class UserAdmin(BaseUserAdmin):
 
 admin.site.register(models.User, UserAdmin)
 admin.site.register(models.Company)
-admin.site.register(models.Profile)
+admin.site.register(models.ProfileType)
 admin.site.register(models.Tag)

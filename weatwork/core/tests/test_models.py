@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model  # Better than importing the model itself
 
-from ..models import Company, Profile, Tag, Media, Gallery, WorkExperience, Recommendation, Favorite, FeedPost
+from ..models import Company, ProfileType, Tag, Media, Gallery, WorkExperience, Recommendation, Favorite, FeedPost
 from core.constants import INDUSTRY_LIST, USERS_PROFILES
 
 
@@ -69,8 +69,8 @@ class ModelTests(TestCase):
     def test_create_profile_type(self):
         """Test creating a new profile type"""
         name = "worker"
-        profile = Profile.objects.create(name=name.lower())
-        profile.save()
+        profile_type = ProfileType.objects.create(name=name.lower())
+        profile_type.save()
 
         self.assertEqual(profile.name, name.lower())
 

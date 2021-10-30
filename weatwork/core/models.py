@@ -69,7 +69,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     next_availability_date = models.DateField(null=True)
     work_experience_in_months = models.IntegerField(default=0)
 
-    profile = models.ForeignKey('Profile', on_delete=models.SET_NULL, null=True)
+    profile_type = models.ForeignKey('ProfileType', on_delete=models.SET_NULL, null=True)
     
     is_company_owner = models.BooleanField(null=True)
     is_self_employed = models.BooleanField(null=True)
@@ -120,7 +120,7 @@ class Company(models.Model):
     is_active = models.BooleanField(default=True)
 
 
-class Profile(models.Model):
+class ProfileType(models.Model):
     def __str__(self):
         return self.name
 
