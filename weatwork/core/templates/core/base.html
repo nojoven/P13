@@ -17,11 +17,11 @@
             <a href="#" class="nav-item nav-link text-warning">Feed</a>
             <a href="#" class="nav-item nav-link text-warning"">Random!</a>
             {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="nav-item nav-link text-warning">Profile</a>            
+                <a href="#" class="nav-item nav-link text-warning">Account</a>            
                 <a href="{% url 'logout' %}" class="nav-item nav-link text-warning">Logout</a>
-                <a href="{% url 'profile' %}" class="nav-item nav-link text-warning">Profile</a>
-                <a href="#" class="nav-item nav-link text-warning">Settings</a>
             {% else %}
-            <a href="{% url 'login' %}" class="nav-item nav-link text-warning"">Login</a>
+                <a href="{% url 'login' %}" class="nav-item nav-link text-warning"">Login</a>
             {% endif %}
         </div>
     </nav>
