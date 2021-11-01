@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .models import User, Media
 from .forms import MediaForm
@@ -9,6 +10,7 @@ def home(request):
     }
     return render(request, 'core/home.html', context)
 
+@login_required
 def add_file(request):
     form = MediaForm(request.POST or None, request.FILES)
     if form.is_valid():
@@ -17,6 +19,7 @@ def add_file(request):
     
     return render(request, 'core/media-form.html', {'form': form})
 
+@login_required
 def update_file(request, file_id):
     media = Media.objects.get(id=file_id)
     
