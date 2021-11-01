@@ -10,7 +10,7 @@ from rest_framework.settings import api_settings
 from user.serializers import UserSerializer, AuthTokenSerializer
 
 from core.models import User
-from .forms import RegistrationForm
+from .forms import RegistrationForm, AccountForm
 
 def create_user(**params):
     """Helper function to create new user"""
@@ -39,6 +39,7 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
 
 
 def register(request):
+    """Register the user"""
     if request.method == 'POST':
         user = User()
         form = RegistrationForm(request.POST or None, request.FILES or None, instance=user)
@@ -51,7 +52,36 @@ def register(request):
         form = RegistrationForm()
     return render(request, 'user/register.html', {'form': form})
 
-# Profile page - needs login to be accessed
-@login_required  
-def profilepage(request):
+# Profile page   
+def profile(request):
+    """Displays the user's showcase"""
     return render(request, 'user/profile.html')
+
+
+# Account management page - needs login to be accessed
+@login_required  
+def account(request):
+    """Provides a form to edit user's details"""
+    return render(request, 'user/account.html')
+
+
+@login_required
+def edit_user(request, user_id):
+    user = User.objects.get(id=user_id)
+    
+    form = AccountForm(request.POST or None, request.FILES or None, instance=user)
+    if form.is_valid():
+        form.save()
+        messages.success(request, f"Your details have been updated successfully.")
+        return redirect('core:home')
+    
+    return render(request, 'user/account.html', {'form': form, 'user': user})
+
+@login_required
+def delete_user(request, user_id):
+    user = User.objects.get(id=user_id)
+
+    if request.method == 'POST':
+        user.delete()
+        messages.success(request, f"Your account is now deleted.")
+        return redirect('core:home')
