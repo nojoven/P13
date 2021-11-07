@@ -62,20 +62,20 @@ def profile(request):
 @login_required  
 def account(request):
     """Provides a form to edit user's details"""
-    return render(request, 'user/account.html')
-
-
-@login_required
-def edit_user(request, user_id):
-    user = User.objects.get(id=user_id)
     
+    user = User.objects.get(email=request.user)
     form = AccountForm(request.POST or None, request.FILES or None, instance=user)
+    
     if form.is_valid():
         form.save()
         messages.success(request, f"Your details have been updated successfully.")
-        return redirect('core:home')
+        return redirect('profile')
+       
+    #context = {'current_user': user}
+    return render(request, 'user/account.html', {'form': form})
     
-    return render(request, 'user/account.html', {'form': form, 'user': user})
+
+
 
 @login_required
 def delete_user(request, user_id):
