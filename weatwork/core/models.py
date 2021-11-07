@@ -33,16 +33,16 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     """Custom user model that supports using email instead of usernames"""
 
-    email = models.EmailField(max_length=255, unique=True)
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255, unique=True, blank=True)
+    first_name = models.CharField(max_length=255, blank=True)
+    last_name = models.CharField(max_length=255, blank=True)
     about = models.TextField(blank=True)
-    mood = models.CharField(max_length=255, null=True)
+    mood = models.CharField(max_length=255, null=True, blank=True)
     user_image = models.ImageField(default="https://cdn.pixabay.com/photo/2019/07/26/20/52/man-4365597_960_720.png")
     username = models.CharField(max_length=255, blank=True)
-    name = models.CharField(max_length=255, null=True, default=None)
-    nickname = models.CharField(max_length=255)
-    linkedin_id = models.CharField(max_length=255, null=True)
+    name = models.CharField(max_length=255, null=True, default=None, blank=True)
+    nickname = models.CharField(max_length=255, blank=True)
+    linkedin_id = models.CharField(max_length=255, null=True, blank=True)
     linkedin = models.URLField(max_length=255, blank=True)
     instagram = models.URLField(max_length=255, blank=True)
     youtube = models.URLField(max_length=255, blank=True)
@@ -55,20 +55,20 @@ class User(AbstractBaseUser, PermissionsMixin):
     github = models.URLField(max_length=255, blank=True)
     gitlab = models.URLField(max_length=255, blank=True)
     bitbucket = models.URLField(max_length=255, blank=True)
-    country = models.CharField(max_length=255)
-    region = models.CharField(max_length=255)
-    city = models.CharField(max_length=255)
-    address = models.CharField(max_length=255)
-    zip_code = models.CharField(max_length=255)
+    country = models.CharField(max_length=255, blank=True)
+    region = models.CharField(max_length=255, blank=True)
+    city = models.CharField(max_length=255, blank=True)
+    address = models.CharField(max_length=255, blank=True)
+    zip_code = models.CharField(max_length=255, blank=True)
     # phone = models.CharField(max_length=20, unique=True)
-    current_job = models.CharField(max_length=255)
-    current_company_name = models.CharField(max_length=255)
-    current_company_website = models.URLField(max_length=255)
-    current_company_address = models.CharField(max_length=255)
-    current_company_activity_area = models.CharField(max_length=255)
-    current_job_start_date = models.DateField(null=True)
-    next_availability_date = models.DateField(null=True)
-    work_experience_in_months = models.IntegerField(default=0)
+    current_job = models.CharField(max_length=255, blank=True)
+    current_company_name = models.CharField(max_length=255, blank=True)
+    current_company_website = models.URLField(max_length=255, blank=True)
+    current_company_address = models.CharField(max_length=255, blank=True)
+    current_company_activity_area = models.CharField(max_length=255, blank=True)
+    current_job_start_date = models.DateField(null=True, blank=True)
+    next_availability_date = models.DateField(null=True, blank=True)
+    work_experience_in_months = models.IntegerField(default=0, blank=True)
 
     profile_type = models.ForeignKey('ProfileType', on_delete=models.SET_NULL, null=True)
     
@@ -105,27 +105,27 @@ class Company(models.Model):
 
     name = models.CharField(max_length=100)
     registration_number = models.CharField(max_length=255, unique=True)
-    industry = models.CharField(max_length=100)
-    headquarters_country = models.CharField(max_length=200)
-    headquarters_address = models.CharField(max_length=200)
-    headquarters_zip_code = models.CharField(max_length=200)
-    motto = models.CharField(max_length=255)
-    decription = models.TextField(max_length=255)
+    industry = models.CharField(max_length=100, blank=True)
+    headquarters_country = models.CharField(max_length=200, blank=True)
+    headquarters_address = models.CharField(max_length=200, blank=True)
+    headquarters_zip_code = models.CharField(max_length=200, blank=True)
+    motto = models.CharField(max_length=255, blank=True)
+    decription = models.TextField(blank=True)
     logo_url = models.CharField(
         max_length=500,
         default="https://cdn.pixabay.com/photo/2019/07/26/20/52/man-4365597_960_720.png",
     )
     number_of_employees = models.IntegerField(default=0)
-    creation_date = models.DateField(null=True)
+    creation_date = models.DateField(null=True, blank=True)
 
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True, blank=True)
 
 
 class ProfileType(models.Model):
     def __str__(self):
         return self.name
 
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100, unique=True, blank=True)
 
 
 class Tag(models.Model):
@@ -136,8 +136,8 @@ class Tag(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
     )
-    name = models.CharField(max_length=70)
-    language = models.CharField(max_length=20)
+    name = models.CharField(max_length=70, blank=True)
+    language = models.CharField(max_length=20, blank=True)
     
 
 class Media(models.Model):
@@ -150,7 +150,7 @@ class Media(models.Model):
     media_type = models.CharField(max_length=100, blank=True)
     gallery = models.ForeignKey('Gallery', on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now=True, blank=True)
-    path = models.FileField(null=True)
+    path = models.FileField(null=True, blank=True)
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
     
