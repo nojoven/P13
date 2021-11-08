@@ -15,7 +15,7 @@ def add_file(request):
     form = MediaForm(request.POST or None, request.FILES)
     if form.is_valid():
         form.save()
-        return redirect('user:profile')
+        return redirect('profile')
     
     return render(request, 'core/media-form.html', {'form': form})
 
@@ -26,7 +26,7 @@ def update_file(request, file_id):
     form = MediaForm(request.POST or None, request.FILES or None, instance=media)
     if form.is_valid():
         form.save()
-        return redirect('user:profile')
+        return redirect('profile')
     
     return render(request, 'core/media-form.html', {'form': form, 'media': media})
 
