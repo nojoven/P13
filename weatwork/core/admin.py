@@ -9,6 +9,7 @@ from . import models
 class UserAdmin(BaseUserAdmin):
     ordering=['id']
     list_display=[
+        'uuid',
         'email',
         'name',
         'user_image',
