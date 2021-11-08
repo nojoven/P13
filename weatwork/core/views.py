@@ -20,8 +20,8 @@ def add_file(request):
     return render(request, 'core/media-form.html', {'form': form})
 
 @login_required
-def update_file(request, file_id):
-    media = Media.objects.get(id=file_id)
+def update_file(request, file_uuid):
+    media = Media.objects.get(id=file_uuid)
     
     form = MediaForm(request.POST or None, request.FILES or None, instance=media)
     if form.is_valid():
@@ -30,8 +30,8 @@ def update_file(request, file_id):
     
     return render(request, 'core/media-form.html', {'form': form, 'media': media})
 
-def delete_file(request, file_id):
-    media = Media.objects.get(id=file_id)
+def delete_file(request, file_uuid):
+    media = Media.objects.get(id=file_uuid)
     
     if request.method == 'POST':
         media.delete()
