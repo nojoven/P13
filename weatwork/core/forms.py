@@ -7,9 +7,10 @@ class MediaForm(forms.ModelForm):
     path = forms.FileField(required=True)
     
     media_type = forms.ModelChoiceField(queryset=MediaType.objects.all(), to_field_name='name', required=True)
+    gallery = forms.ModelChoiceField(queryset=Gallery.objects.all(), to_field_name='name', required=True)
     class Meta:
         model = Media
-        fields = ['name', 'title', 'path', 'media_type']
+        fields = ['name', 'title', 'path', 'media_type', 'gallery']
 
 class GalleryForm(forms.ModelForm):
     name = forms.CharField(required=True)
