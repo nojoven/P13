@@ -1,5 +1,5 @@
 from django import forms
-from .models import Media, MediaType
+from .models import Gallery, Media, MediaType
 
 class MediaForm(forms.ModelForm):
     name = forms.CharField(required=True)
@@ -10,3 +10,13 @@ class MediaForm(forms.ModelForm):
     class Meta:
         model = Media
         fields = ['name', 'title', 'path', 'media_type']
+
+class GalleryForm(forms.ModelForm):
+    name = forms.CharField(required=True)
+    author = None
+    uuid = None
+     
+    class Meta:
+        model = Gallery
+        fields = ['name']
+  
