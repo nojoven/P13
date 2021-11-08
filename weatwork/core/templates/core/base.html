@@ -17,6 +17,7 @@
             <a href="#" class="nav-item nav-link text-warning">Feed</a>
             <a href="#" class="nav-item nav-link text-warning"">Random!</a>
             {% if user.is_authenticated %}
+                <a href="{% url 'core:add_gallery' %}" class="nav-item nav-link text-warning">Create Gallery</a>
                 <a href="{% url 'core:add_file' %}" class="nav-item nav-link text-warning">Upload</a>
                 <a href="{% url 'profile' %}" class="nav-item nav-link text-warning">Profile</a>            
                 <a href="{% url 'account' %}" class="nav-item nav-link text-warning">Account</a>            
