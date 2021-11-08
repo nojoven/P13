@@ -106,6 +106,7 @@ class Company(models.Model):
         return self.name
 
     name = models.CharField(max_length=100)
+    uuid = models.UUIDField(default=uuid.uuid1, editable=False)
     registration_number = models.CharField(max_length=255, unique=True)
     industry = models.CharField(max_length=100, blank=True)
     headquarters_country = models.CharField(max_length=200, blank=True)
@@ -128,7 +129,7 @@ class ProfileType(models.Model):
         return self.name
 
     name = models.CharField(max_length=100, unique=True, blank=True)
-
+    uuid = models.UUIDField(default=uuid.uuid1, editable=False)
 
 class Tag(models.Model):
     def __str__(self):
@@ -140,7 +141,7 @@ class Tag(models.Model):
     )
     name = models.CharField(max_length=70, blank=True)
     language = models.CharField(max_length=20, blank=True)
-    
+    uuid = models.UUIDField(default=uuid.uuid1, editable=False)
 
 class Media(models.Model):
     def __str__(self):
@@ -155,6 +156,7 @@ class Media(models.Model):
     path = models.FileField(null=True, blank=True)
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
+    uuid = models.UUIDField(default=uuid.uuid1, editable=False)
     
     is_active = models.BooleanField(default=True)
 
@@ -164,7 +166,7 @@ class MediaType(models.Model):
         return self.name
 
     name = models.CharField(max_length=255, unique=True, null=True)
-
+    uuid = models.UUIDField(default=uuid.uuid1, editable=False)
 
 class Gallery(models.Model):
     def __str__(self):
@@ -172,6 +174,7 @@ class Gallery(models.Model):
 
     name = models.CharField(max_length=100, blank=True)
     author = models.CharField(max_length=255, blank=True)
+    uuid = models.UUIDField(default=uuid.uuid1, editable=False)
     
     is_active = models.BooleanField(default=True)
 
@@ -186,6 +189,7 @@ class WorkExperience(models.Model):
     description = models.TextField(max_length=500, blank=True)
     start_date = models.DateField(null=True)
     end_date = models.DateField(null=True)
+    uuid = models.UUIDField(default=uuid.uuid1, editable=False)
     
     is_current_job = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
@@ -199,6 +203,7 @@ class Recommendation(models.Model):
     text = models.TextField(max_length=255, blank=True)
     author = models.CharField(max_length=255, blank=True)
     recipient = models.CharField(max_length=255, blank=True)
+    uuid = models.UUIDField(default=uuid.uuid1, editable=False)
     
     is_approved = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
@@ -209,7 +214,7 @@ class Favorite(models.Model):
         return self.name
     
     is_active = models.BooleanField(default=True)
-
+    uuid = models.UUIDField(default=uuid.uuid1, editable=False)
 
 class FeedPost(models.Model):
     def __str__(self):
@@ -220,5 +225,6 @@ class FeedPost(models.Model):
     publication_date = models.DateTimeField(auto_now=True)
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
+    uuid = models.UUIDField(default=uuid.uuid1, editable=False)
     
     is_active = models.BooleanField(default=True)
