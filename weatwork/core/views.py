@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .models import User, Media
-from .forms import MediaForm
+from .forms import MediaForm, GalleryForm
 
 def home(request):
     users = User.objects.all().filter(is_superuser=False, is_active=True)
@@ -9,6 +9,17 @@ def home(request):
         'users_list': users,
     }
     return render(request, 'core/home.html', context)
+
+
+@login_required
+def add_gallery(request):
+    form = GalleryForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('core:add_file')
+    
+    return render(request, 'core/gallery-form.html', {'form': form})
+
 
 @login_required
 def add_file(request):

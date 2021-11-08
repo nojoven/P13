@@ -16,6 +16,9 @@ urlpatterns = [
     # add media file
     path('addfile/', views.add_file, name='add_file'),
     
+    # add media file
+    path('addgallery/', views.add_gallery, name='add_gallery'),
+    
     # edit media file
     path('editfile/<int:file_uuid>/', views.update_file, name='update_file'),
 ]
