@@ -150,7 +150,7 @@ class Media(models.Model):
     name = models.CharField(max_length=100, blank=True)
     author = models.CharField(max_length=255, blank=True)
     title = models.CharField(max_length=100, blank=True)
-    media_type = models.CharField(max_length=100, blank=True)
+    media_type = models.ForeignKey('MediaType', on_delete=models.SET_NULL, null=True)
     gallery = models.ForeignKey('Gallery', on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now=True, blank=True)
     path = models.FileField(null=True, blank=True)
