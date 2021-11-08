@@ -165,7 +165,7 @@ class MediaType(models.Model):
     def __str__(self):
         return self.name
 
-    name = models.CharField(max_length=255, unique=True, null=True)
+    name = models.CharField(max_length=255, unique=True, null=True, default='image')
     uuid = models.UUIDField(default=uuid.uuid1, editable=False)
 
 class Gallery(models.Model):
