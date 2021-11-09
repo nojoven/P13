@@ -60,7 +60,7 @@ docker-compose run weatwork sh -c "python manage.py makemigrations <*YOUR_APP_NA
 
 - https://docs.travis-ci.com/user/tutorial/
 
--https://docs.travis-ci.com/user/job-lifecycle/#customizing-the-build-phase
+- https://docs.travis-ci.com/user/job-lifecycle/#customizing-the-build-phase
 
 - https://flake8.pycqa.org/en/latest/
 
@@ -87,3 +87,15 @@ docker-compose run weatwork sh -c "python manage.py makemigrations <*YOUR_APP_NA
 -  https://www.django-rest-framework.org/api-guide/generic-views/#retrieveupdateapiview
 
 - https://www.django-rest-framework.org/api-guide/authentication/#by-exposing-an-api-endpoint
+
+- https://docs.djangoproject.com/en/3.2/ref/models/fields/#django.db.models.ForeignKey.on_delete
+
+- https://docs.djangoproject.com/en/3.2/ref/models/fields/
+
+- https://docs.djangoproject.com/en/3.2/ref/contrib/admin/
+
+- https://docs.djangoproject.com/en/3.2/ref/models/instances/
+
+- https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+
+- https://docs.djangoproject.com/en/3.2/howto/static-files/#serving-files-uploaded-by-a-user-during-development
