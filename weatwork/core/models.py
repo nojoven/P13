@@ -7,6 +7,9 @@ from django.contrib.auth.models import (
 )
 from django.conf import settings
 
+# Helper function to return uuid as string
+def uuid_generator():
+    return uuid.uuid4().hex
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -35,7 +38,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     """Custom user model that supports using email instead of usernames"""
 
     email = models.EmailField(max_length=255, unique=True, blank=True)
-    uuid = models.UUIDField(default=uuid.uuid1, editable=False)
+    uuid = models.UUIDField(default=uuid_generator, editable=False)
     first_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255, blank=True)
     about = models.TextField(blank=True)
