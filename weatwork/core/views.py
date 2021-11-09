@@ -10,6 +10,14 @@ def home(request):
     }
     return render(request, 'core/home.html', context)
 
+# Showcase page   
+def showcase(request, user_uuid):
+    """Displays the profile of a specific user"""
+    selected_user = User.objects.filter(uuid=user_uuid)
+    if selected_user:
+        return render(request, 'core/showcase.html', {'selected_user': selected_user})
+    
+    
 
 @login_required
 def add_gallery(request):

@@ -13,10 +13,13 @@ urlpatterns = [
     # /home
     path('home/', views.home, name='home'),
     
+    # /showcase/uuid
+    path('showcase/<uuid:user_uuid>/', views.showcase, name='showcase'),
+        
     # add media file
     path('addfile/', views.add_file, name='add_file'),
     
-    # add media file
+    # add gallery
     path('addgallery/', views.add_gallery, name='add_gallery'),
     
     # edit media file

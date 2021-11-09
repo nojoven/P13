@@ -54,7 +54,7 @@ def register(request):
 
 # Profile page   
 def profile(request):
-    """Displays the user's showcase"""
+    """Displays the current user's profile"""
     return render(request, 'user/profile.html')
 
 

@@ -18,7 +18,7 @@
                     </ul>
                 </div>                
                 <div class="col-md-2">
-                    <a href="{% url 'profile' %}" class="btn btn-success">Details</a>
+                    <a href="{% url 'core:showcase' user.uuid %}" class="btn btn-success">Details</a>
                 </div>
             </div>
         {% endfor %}
