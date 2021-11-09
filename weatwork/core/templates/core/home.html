@@ -6,7 +6,7 @@
         {% for user in users_list %}
             <div class="row align-items-center">
                 <div class="col-md-3 offset-md-2">
-                    <img class="card" height="185px" width="150px" src="{{ user.user_image }}" alt="">
+                    <img class="card" height="185px" width="150px" src="{{ user.user_image.url }}" alt="">
                 </div>
                 <div class="col-md-4">
                     <ul style="list-style-type: none">
