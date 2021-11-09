@@ -4,6 +4,7 @@ from django.dispatch import receiver
 from core.models import User
 
 
+"""
 @receiver(post_save, sender=User)
 def email_after_user_registration(sender, instance, created, **kwargs):
     if created:
@@ -26,7 +27,7 @@ def deletion_email_alert(sender, instance, **kwargs):
     #instance.emailalert.save()
     pass
 
-
+@receiver(post_delete, sender=User)
 def email_after_account_deactivation(sender, instance, deactivated, **kwargs):
     if deactivated:
         # EmailAlert.objects.create(user=instance)
@@ -47,3 +48,5 @@ def email_after_account_reactivation(sender, instance, reactivated, **kwargs):
 def reactivation_email_alert(sender, instance, **kwargs):
     #instance.emailalert.save()
     pass
+
+"""
