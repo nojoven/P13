@@ -44,7 +44,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     about = models.TextField(blank=True)
     motto = models.CharField(max_length=255, null=True, blank=True)
     mood = models.CharField(max_length=255, null=True, blank=True)
-    user_image = models.ImageField(default="https://cdn.pixabay.com/photo/2019/07/26/20/52/man-4365597_960_720.png")
+    user_image = models.ImageField(default="female-worker-default.jpg", upload_to='media')
     username = models.CharField(max_length=255, blank=True)
     name = models.CharField(max_length=255, null=True, default=None, blank=True)
     nickname = models.CharField(max_length=255, blank=True)
