@@ -8,6 +8,14 @@ Open your terminal and run:
 Where '.' is the *WORKDIR* that is defined in our dockerfile. 
 
 # Run the application
+Clone the project then in the P13:
+
+- *docker-compose up*
+- *docker-compose run weatwork sh -c "python manage.py createsuperuser"*
+- Open *http://localhost:8000/home/* ou *http://localhost:8000/admin/* dans le navigateur.
+
+# Use Flake8 
+- *docker-compose exec weatwork sh -c "python manage.py test && flake8"*
 
 # Generate the secret key
 
