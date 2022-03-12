@@ -20,4 +20,4 @@ pytest-sugar==0.9.4
 pytest-cov==2.12.1
 pytest-picked==0.4.6
 pytest-randomly==3.10.1
-pillow==8.3.2
+pillow==9.0.1
